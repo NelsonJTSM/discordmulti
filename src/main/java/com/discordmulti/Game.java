@@ -6,8 +6,6 @@ import java.util.HashMap;
 public class Game {
 
     protected String name;
-    protected ArrayList<Player> players;
-    protected HashMap<Long, Player> playerHashMap;
 
     public Game(String name) {
         this.name = name;
@@ -32,8 +30,7 @@ public class Game {
     }
 
     public void reset() {
-        players = new ArrayList<Player>();
-        playerHashMap = new HashMap<Long, Player>();
+
     }
 
     public void stop() {
