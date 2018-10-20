@@ -23,6 +23,12 @@ public class Game {
 
         //handles people joining the game
         if (message.toLowerCase().equals("join")) {
+
+            //make sure the player can join the game
+            if (players.size() >= maxPlayers) {
+                output("Sorry, there are too many players in the game to join");
+            }
+
             if (addPlayer(player.getId(), player.getName())) {
                 output(player.getName() + " has successfully joined the game");
             } else {
@@ -41,9 +47,24 @@ public class Game {
             players.add(player);
             playerHashMap.put(id, player);
 
+            askForMorePlayers();
             return true;
         } else {
             return false;
+        }
+
+    }
+
+    protected void askForMorePlayers() {
+        //output a message
+        int numOfPlayers = players.size();
+
+        if (numOfPlayers < minPlayers) {
+            output("More players need to join before you can start");
+        } else if (numOfPlayers >= maxPlayers) {
+            output("Starting the game because the maximum number of players have joined");
+        } else {
+            output("Either start the game by typing $start, or wait for more players to join");
         }
 
     }

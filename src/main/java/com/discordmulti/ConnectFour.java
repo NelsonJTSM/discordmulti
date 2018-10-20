@@ -3,7 +3,7 @@ package com.discordmulti;
 public class ConnectFour extends Game {
 
     public ConnectFour() {
-        super("Connect Four");
+        super("Connect Four", 2, 2);
 
     }
 
@@ -28,9 +28,7 @@ public class ConnectFour extends Game {
 
     }
 
-    public boolean joinPlayer(String id, String name) {
 
-    }
 
 
 
@@ -130,6 +128,7 @@ class Board {
                 board[i][column] = player;
             }
         }
+        return true;
 
     }
 
