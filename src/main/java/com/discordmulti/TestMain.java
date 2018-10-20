@@ -18,11 +18,24 @@ public class TestMain implements Runnable {
     }
 
     public void run() {
-        while (true) {
+        String line = "";
+
+        while (!line.equals("$quit")) {
             if (scan.hasNext()) {
-                String line = scan.nextLine();
-                if (line.startsWith("$") && line.length() > 1) {
-                    game.input(line.substring(1, line.length()));
+                line = scan.nextLine();
+                int dollarIndex = line.indexOf('$');
+
+                if (dollarIndex > 0 && line.length() > dollarIndex) {
+                    String playerId = line.substring(0, dollarIndex);
+                    String message = line.substring(dollarIndex+1);
+
+                    try {
+                        long id = Long.parseLong(playerId);
+                        game.input(id, message);
+                    } catch (Exception e) {
+                        System.err.println("Player ID must be a long");
+                        e.printStackTrace();
+                    }
                 }
             }
         }

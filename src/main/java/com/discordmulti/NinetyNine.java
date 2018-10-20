@@ -23,15 +23,18 @@ public class NinetyNine extends Game {
                 cards.add(new Card(suits[s], numbers[n]));
             }
         }
+
+
     }
-
-
 }
 
 class Card {
-
     char suit;
     char number;
+
+    public String toString() {
+        return "" + suit + number;
+    }
 
     public Card(char suit, char number) {
         this.suit = suit;
