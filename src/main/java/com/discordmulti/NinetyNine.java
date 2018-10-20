@@ -1,3 +1,5 @@
+package com.discordmulti;
+
 import java.util.ArrayList;
 
 public class NinetyNine extends Game {

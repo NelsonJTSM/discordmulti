@@ -1,3 +1,5 @@
+package com.discordmulti;
+
 public class Player {
 
     private String name;
