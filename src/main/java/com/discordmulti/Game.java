@@ -13,8 +13,8 @@ public class Game {
         this.name = name;
     }
 
-    protected void input(long id, String message) {
-        System.out.println(id + ":\"" + message + "\"");
+    protected void input(Player player, String message) {
+        System.out.println(player.getName() + ":\"" + message + "\"");
     }
 
     // TODO: Change for discord

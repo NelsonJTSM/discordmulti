@@ -4,13 +4,47 @@ import java.util.ArrayList;
 
 public class NinetyNine extends Game {
 
+    private final int MIN_PLAYERS = 2;
+    private final int MAX_PLAYERS = 8;
+
     private ArrayList<Card> cards;
 
     public NinetyNine() {
         super("99");
+        reset();
     }
 
+    @Override
+    public void input(Player player, String message) {
+        if (message.equals("join")) {
+            playerJoin(player);
+        } else if (message.equals("start")) {
+            checkStart();
+        }
+    }
 
+    /*
+
+     */
+    private void playerJoin(Player player) {
+        if (playerHashMap.containsKey(player.getId())) {
+            output(playerHashMap.get(player.getId()).getName() + " already exists");
+        } else if (players.size() >= MAX_PLAYERS) {
+            output("There are too many players (" + MAX_PLAYERS + ") already");
+        } else {
+            players.add(player);
+            playerHashMap.put(player.getId(), player);
+            output("Added " + player.getName());
+        }
+    }
+
+    private void checkStart() {
+        if (players.size() < MIN_PLAYERS) {
+            output("Not enough players");
+        } else {
+            start();
+        }
+    }
 
     private void setupCards() {
         cards = new ArrayList<Card>();

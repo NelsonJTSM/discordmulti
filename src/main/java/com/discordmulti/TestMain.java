@@ -4,16 +4,32 @@ import java.util.Scanner;
 
 public class TestMain implements Runnable {
 
-    static Game game;
-    static Scanner scan;
+    Game game;
+    Scanner scan;
 
     public static void main(String[] args) {
         TestMain main = new TestMain();
+
+        if (args.length != 1) {
+            System.out.println("Correct usage: TestMain checkers");
+        } else {
+            String gameName = args[0];
+
+            if (gameName.equals("99")) {
+                main.game = new NinetyNine();
+            } else if (gameName.equals("connect4")) {
+                main.game = new ConnectFour();
+            } else {
+                System.out.println("Game not found");
+                System.exit(1);
+            }
+        }
+
         main.run();
     }
 
     public TestMain() {
-        game = new Game("test");
+        game = new NinetyNine();
         scan = new Scanner(System.in);
     }
 
@@ -31,7 +47,7 @@ public class TestMain implements Runnable {
 
                     try {
                         long id = Long.parseLong(playerId);
-                        game.input(id, message);
+                        game.input(new Player("Player #" + id, id), message);
                     } catch (Exception e) {
                         System.err.println("Player ID must be a long");
                         e.printStackTrace();
