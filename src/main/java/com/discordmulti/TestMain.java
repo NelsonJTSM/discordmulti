@@ -33,6 +33,8 @@ public class TestMain implements Runnable {
         scan = new Scanner(System.in);
     }
 
+    //TODO: - make a method for when a user quits
+
     public void run() {
         String line = "";
 

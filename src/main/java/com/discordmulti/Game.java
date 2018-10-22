@@ -36,6 +36,11 @@ public class Game {
             }
         }
 
+        //handles people starting the game
+        if (message.toLowerCase().equals("start") && players.size() >= minPlayers && players.size() <= maxPlayers) {
+            start();
+        }
+
         System.out.println(player.getName() + ":\"" + message + "\"");
     }
 
@@ -63,6 +68,7 @@ public class Game {
             output("More players need to join before you can start");
         } else if (numOfPlayers >= maxPlayers) {
             output("Starting the game because the maximum number of players have joined");
+            start();
         } else {
             output("Either start the game by typing $start, or wait for more players to join");
         }
